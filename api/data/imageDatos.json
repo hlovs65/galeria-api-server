@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Arrecifes de Veracruz",
+    "description": "Un sistema de arrecifes de coral con una gran diversidad de vida marina.",
+    "imageUrl": "/assets/acroporas_coral_manuel_victoria.jpg",
+    "filename": "acroporas_coral_manuel_victoria.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Barranca del Cobre (Chihuahua)",
+    "description": "Un impresionante cañon, mas grande y profundo que el Gran cañon de Arizona.",
+    "imageUrl": "/assets/Barranca_de_cobre_chihuahua.jpg",
+    "filename": "Barranca_de_cobre_chihuahua.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Cañon del Sumidero (Chiapas)",
+    "description": "Un cañón con imponentes paredes rocosas y el río Grijalva, donde se puede realizar un paseo en lancha.",
+    "imageUrl": "/assets/Cañon_del_sumidero.jpg",
+    "filename": "Cañon_del_sumidero.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Islas Marietas (Nayarit)",
+    "description": "Un archipiélago con playas de arena blanca, arrecifes de coral y una gran variedad de vida marina.",
+    "imageUrl": "/assets/Islas_marietas.jpg",
+    "filename": "Islas_marietas.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Museo subacuático de Arte (MUSA) (Cancún)",
+    "description": "Un museo único que exhibe esculturas sumergidas en el océano.",
+    "imageUrl": "/assets/Museo_subacuatico_de_arte.jpg",
+    "filename": "Museo_subacuatico_de_arte.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Reserva de la Biósfera Mariposa Monarca (Michoacán)",
+    "description": "Un lugar de refugio para la mariposa monarca, con una migración impresionante cada año.",
+    "imageUrl": "/assets/Reserva_de_la_biosfera_mariposa_monarca.jpg",
+    "filename": "Reserva_de_la_biosfera_mariposa_monarca.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Volcán Popocatépetl (Puebla)",
+    "description": "Un volcán activo con una impresionante vista y una rica historia cultural.",
+    "imageUrl": "/assets/Volcan_Popocatepetl.jpg",
+    "filename": "Volcan_Popocatepetl.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Presa Zimapan (Queretaro)",
+    "description": "Esta gran presa divide dos estados, Querétaro e Hidalgo. Aquí confluyen tres ríos: tula, San Juan y Moctezuma.",
+    "imageUrl": "/assets/5274b8bed6be491b49840137b1d153897ceac3c8a378f76327e20dbda98c077f.jpg",
+    "filename": "5274b8bed6be491b49840137b1d153897ceac3c8a378f76327e20dbda98c077f.jpg"
+  }
+]
