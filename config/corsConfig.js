@@ -1,45 +1,38 @@
 // api/config/corsConfig.js
 import cors from 'cors';
 
-// CRÍTICO: Leer la variable de entorno CLIENT_URL que definimos en Render.
-// Esta variable debe contener la URL de Vercel (https://galeria-app-frontend.vercel.app).
-// Si no existe (ej: en desarrollo local), usamos localhost:3001 como respaldo.
-const CLIENT_URL = process.env.CLIENT_URL; // Render inyecta la URL de Vercel aquí
+// Obtener la variable de entorno. Render ya tiene el valor de Vercel aquí.
+const CLIENT_URL = process.env.CLIENT_URL;
 
-// 1. Definimos los orígenes permitidos.
-// En producción (Render), el valor de CLIENT_URL será la URL de Vercel.
-// En desarrollo (Local), podemos añadir todos los puertos que usamos localmente.
-
-let allowedOrigins = [];
-
-if (CLIENT_URL) {
-    // Si la variable de Render existe, solo permitimos esa URL.
-    allowedOrigins.push(CLIENT_URL);
-} else {
-    // Si estamos en desarrollo local, permitimos los puertos de desarrollo.
-    allowedOrigins = [
-        'http://localhost:5173', // Puerto común de Vite/React
-        'http://localhost:3000', // Puerto común de React
-        'http://localhost:3001'  // Puerto de tu propio Backend (aunque no estrictamente necesario para CORS, es buena práctica)
-    ];
-}
+// Definimos los orígenes permitidos. Usaremos la variable de entorno para producción.
+// Y añadiremos los puertos locales explícitamente para el desarrollo local.
+const allowedOrigins = [
+    // El valor de Vercel de Render (CLIENT_URL)
+    CLIENT_URL,
+    // Puertos locales de desarrollo (necesarios para probar si corres tu API localmente)
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'http://localhost:3001'
+].filter(Boolean); // Filtramos cualquier valor "undefined" o vacío
 
 const corsOptions = {
-    // La función verifica si el dominio de origen (el que hace la petición)
-    // está incluido en nuestra lista 'allowedOrigins'.
     origin: (origin, callback) => {
-        // Permitir peticiones sin origen (ej: Postman, o peticiones locales directas)
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            // Rechazar peticiones de dominios no autorizados
-            console.error('CORS: Origen no permitido:', origin);
-            callback(new Error('Not allowed by CORS'));
+        // 1. Permitir peticiones sin origen (ej: Postman, o la verificación de Render)
+        if (!origin) {
+            return callback(null, true);
         }
+
+        // 2. Permitir peticiones desde cualquiera de nuestros orígenes permitidos.
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        
+        // 3. Bloquear cualquier otro origen (incluyendo la URL interna de Render que está causando el error)
+        console.error('CORS: Origen no permitido:', origin);
+        return callback(new Error('Not allowed by CORS'));
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permite los métodos que usas en tu API
-    credentials: true // Permite el envío de cookies o headers de autorización
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
 };
 
-// Exportamos el middleware de CORS ya configurado
 export const corsMiddleware = cors(corsOptions);
